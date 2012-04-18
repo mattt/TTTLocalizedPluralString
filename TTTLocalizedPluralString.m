@@ -124,6 +124,19 @@ static NSString * TTTThaiPluralRuleForCount(NSUInteger count) {
     return kTTTOtherPluralRule;
 }
 
+static NSString * TTTCzechPluralRuleForCount(NSUInteger count) {
+    switch (count) {
+        case 1:
+            return kTTTOnePluralRule;
+        case 2:
+        case 3:
+        case 4:
+            return kTTTFewPluralRule;
+        default:
+            return kTTTOtherPluralRule;
+    }
+}
+
 NSString * TTTLocalizedPluralStringKeyForCountAndSingularNoun(NSUInteger count, NSString *singular) {
     NSString *languageCode = [[[NSBundle mainBundle] preferredLocalizations] objectAtIndex:0];
     
@@ -150,6 +163,8 @@ NSString * TTTLocalizedPluralStringKeyForCountAndSingularNoun(NSUInteger count, 
         pluralRule = TTTSpanishPluralRuleForCount(count);
     } else if ([languageCode isEqualToString:@"th"]) {
         pluralRule = TTTThaiPluralRuleForCount(count);
+    } else if ([languageCode isEqualToString:@"cs"]) {
+        pluralRule = TTTCzechPluralRuleForCount(count);
     } else {
         NSLog(@"Unsupported language: %@", languageCode);
         return nil;
