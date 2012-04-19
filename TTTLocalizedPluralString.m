@@ -1,17 +1,17 @@
 // TTTLocalizedPluralString.h
 //
 // Copyright (c) 2011 Mattt Thompson (http://mattt.me)
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
 // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 // copies of the Software, and to permit persons to whom the Software is
 // furnished to do so, subject to the following conditions:
-// 
+//
 // The above copyright notice and this permission notice shall be included in
 // all copies or substantial portions of the Software.
-// 
+//
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -57,6 +57,18 @@ static NSString * TTTSimplifiedChinesePluralRuleForCount(NSUInteger count) {
     return kTTTOtherPluralRule;
 }
 
+static NSString * TTTCzechPluralRuleForCount(NSUInteger count) {
+    switch (count) {
+        case 1:
+            return kTTTOnePluralRule;
+        case 2:
+        case 3:
+        case 4:
+            return kTTTFewPluralRule;
+        default:
+            return kTTTOtherPluralRule;
+    }
+}
 
 static NSString * TTTEnglishPluralRuleForCount(NSUInteger count) {
     switch (count) {
@@ -124,27 +136,16 @@ static NSString * TTTThaiPluralRuleForCount(NSUInteger count) {
     return kTTTOtherPluralRule;
 }
 
-static NSString * TTTCzechPluralRuleForCount(NSUInteger count) {
-    switch (count) {
-        case 1:
-            return kTTTOnePluralRule;
-        case 2:
-        case 3:
-        case 4:
-            return kTTTFewPluralRule;
-        default:
-            return kTTTOtherPluralRule;
-    }
-}
-
 NSString * TTTLocalizedPluralStringKeyForCountAndSingularNoun(NSUInteger count, NSString *singular) {
     NSString *languageCode = [[[NSBundle mainBundle] preferredLocalizations] objectAtIndex:0];
-    
+
     NSString *pluralRule = nil;
     if ([languageCode isEqualToString:@"ar"]) {
         pluralRule = TTTArabicPluralRuleForCount(count);
     } else if ([languageCode isEqualToString:@"zh-hans"]) {
         pluralRule = TTTSimplifiedChinesePluralRuleForCount(count);
+    } else if ([languageCode isEqualToString:@"cs"]) {
+        pluralRule = TTTCzechPluralRuleForCount(count);
     } else if ([languageCode isEqualToString:@"en"]) {
         pluralRule = TTTEnglishPluralRuleForCount(count);
     } else if ([languageCode isEqualToString:@"fr"]) {
@@ -163,12 +164,10 @@ NSString * TTTLocalizedPluralStringKeyForCountAndSingularNoun(NSUInteger count, 
         pluralRule = TTTSpanishPluralRuleForCount(count);
     } else if ([languageCode isEqualToString:@"th"]) {
         pluralRule = TTTThaiPluralRuleForCount(count);
-    } else if ([languageCode isEqualToString:@"cs"]) {
-        pluralRule = TTTCzechPluralRuleForCount(count);
     } else {
         NSLog(@"Unsupported language: %@", languageCode);
         return nil;
     }
-    
+
     return [NSString stringWithFormat:@"%%d %@ (plural rule: %@)", singular, pluralRule];
 }
