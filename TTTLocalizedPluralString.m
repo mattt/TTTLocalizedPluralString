@@ -123,6 +123,30 @@ static NSString * TTTPortuguesePluralRuleForCount(NSUInteger count) {
     }
 }
 
+static NSString * TTTRussianPluralRuleForCount(NSUInteger count) {
+    NSUInteger mod10 = count % 10;
+    NSUInteger mod100 = count % 100;
+
+    switch (mod10) {
+        case 1:
+            if (mod100 != 11) {
+              return kTTTOnePluralRule;
+            }
+            break;
+        case 2:
+        case 3:
+        case 4:
+            if (mod100 != 12 && mod100 != 13 && mod100 != 14) {
+                return kTTTFewPluralRule;
+            }
+            break;
+        default:
+            break;
+    }
+
+    return kTTTManyPluralRule;
+}
+
 static NSString * TTTSpanishPluralRuleForCount(NSUInteger count) {
     switch (count) {
         case 1:
@@ -134,32 +158,6 @@ static NSString * TTTSpanishPluralRuleForCount(NSUInteger count) {
 
 static NSString * TTTThaiPluralRuleForCount(NSUInteger count) {
     return kTTTOtherPluralRule;
-}
-
-static NSString * TTTRussianPluralRuleForCount(NSUInteger count) {
-    
-    NSUInteger n10 = count % 10;
-    NSUInteger n100 = count % 100;    
-    
-    switch (n10)
-    {
-        case 1:
-            if (n100 != 11)
-                return kTTTOnePluralRule;
-            break;
-            
-        case 2:
-        case 3:
-        case 4:
-            if (n100 != 12 && n100 != 13 && n100 != 14)
-                return kTTTFewPluralRule;
-            break;
-
-        default:    
-            break;
-    }
-
-    return kTTTManyPluralRule; 
 }
 
 NSString * TTTLocalizedPluralStringKeyForCountAndSingularNoun(NSUInteger count, NSString *singular) {
@@ -186,12 +184,12 @@ NSString * TTTLocalizedPluralStringKeyForCountAndSingularNoun(NSUInteger count, 
         pluralRule = TTTKoreanPluralRuleForCount(count);
     } else if ([languageCode isEqualToString:@"pt"]) {
         pluralRule = TTTPortuguesePluralRuleForCount(count);
+    } else if ([languageCode isEqualToString:@"ru"]) {
+        pluralRule = TTTRussianPluralRuleForCount(count);
     } else if ([languageCode isEqualToString:@"es"]) {
         pluralRule = TTTSpanishPluralRuleForCount(count);
     } else if ([languageCode isEqualToString:@"th"]) {
         pluralRule = TTTThaiPluralRuleForCount(count);
-    } else if ([languageCode isEqualToString:@"ru"]) {
-        pluralRule = TTTRussianPluralRuleForCount(count);            
     } else {
         NSLog(@"Unsupported language: %@", languageCode);
         return nil;
