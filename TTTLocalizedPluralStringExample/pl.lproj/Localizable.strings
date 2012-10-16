@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  TTTLocalizedPluralStringExample
+
+  Created by frytaz1 on 10/16/12.
+
+*/
+
+"%d Person (plural rule: zero)" = "Osób";
+"%d Person (plural rule: one)" = "Osoba";
+"%d Person (plural rule: few)" = "Osoby";
+"%d Person (plural rule: other)" = "Osób";
+
+"%d Car (plural rule: zero)" = "Samochodów";
+"%d Car (plural rule: one)" = "Samochód";
+"%d Car (plural rule: few)" = "Samochody";
+"%d Car (plural rule: other)" = "Samochodów";
