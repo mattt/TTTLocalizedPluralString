@@ -114,6 +114,29 @@ static NSString * TTTKoreanPluralRuleForCount(NSUInteger count) {
     return kTTTOtherPluralRule;
 }
 
+static NSString * TTTPolishPluralRuleForCount(NSUInteger count) {
+    NSUInteger mod10 = count % 10;
+    NSUInteger mod100 = count % 100;
+
+    if (count == 1) {
+        return kTTTOnePluralRule;
+    }
+
+    switch (mod10) {
+        case 2:
+        case 3:
+        case 4:
+            if (mod100 != 12 && mod100 != 13 && mod100 != 14) {
+                return kTTTFewPluralRule;
+            }
+            break;
+        default:
+            break;
+    }
+
+    return kTTTManyPluralRule;
+}
+
 static NSString * TTTPortuguesePluralRuleForCount(NSUInteger count) {
     switch (count) {
         case 1:
@@ -182,6 +205,8 @@ NSString * TTTLocalizedPluralStringKeyForCountAndSingularNoun(NSUInteger count, 
         pluralRule = TTTJapanesePluralRuleForCount(count);
     } else if ([languageCode isEqualToString:@"ko"]) {
         pluralRule = TTTKoreanPluralRuleForCount(count);
+    } else if ([languageCode isEqualToString:@"pl"]) {
+        pluralRule = TTTPolishPluralRuleForCount(count);
     } else if ([languageCode isEqualToString:@"pt"]) {
         pluralRule = TTTPortuguesePluralRuleForCount(count);
     } else if ([languageCode isEqualToString:@"ru"]) {
