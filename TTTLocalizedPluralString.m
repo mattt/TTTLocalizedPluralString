@@ -97,6 +97,15 @@ static NSString * TTTGermanPluralRuleForCount(NSUInteger count) {
     }
 }
 
+static NSString * TTTDutchPluralRuleForCount(NSUInteger count) {
+    switch (count) {
+        case 1:
+            return kTTTOnePluralRule;
+        default:
+            return kTTTOtherPluralRule;
+    }
+}
+
 static NSString * TTTItalianPluralRuleForCount(NSUInteger count) {
     switch (count) {
         case 1:
@@ -199,6 +208,8 @@ NSString * TTTLocalizedPluralStringKeyForCountAndSingularNoun(NSUInteger count, 
         pluralRule = TTTFrenchPluralRuleForCount(count);
     } else if ([languageCode isEqualToString:@"de"]) {
         pluralRule = TTTGermanPluralRuleForCount(count);
+    } else if ([languageCode isEqualToString:@"nl"]) {
+        pluralRule = TTTDutchPluralRuleForCount(count);
     } else if ([languageCode isEqualToString:@"it"]) {
         pluralRule = TTTItalianPluralRuleForCount(count);
     } else if ([languageCode isEqualToString:@"ja"]) {
