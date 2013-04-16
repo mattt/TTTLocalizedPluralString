@@ -202,7 +202,7 @@ NSString * TTTLocalizedPluralStringKeyForCountAndSingularNoun(NSUInteger count, 
         pluralRule = TTTSimplifiedChinesePluralRuleForCount(count);
     } else if ([languageCode isEqualToString:@"cs"]) {
         pluralRule = TTTCzechPluralRuleForCount(count);
-    } else if ([languageCode isEqualToString:@"en"]) {
+    } else if ([languageCode hasPrefix:@"en"]) {
         pluralRule = TTTEnglishPluralRuleForCount(count);
     } else if ([languageCode isEqualToString:@"fr"]) {
         pluralRule = TTTFrenchPluralRuleForCount(count);
