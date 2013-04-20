@@ -28,10 +28,10 @@ extern NSString * TTTLocalizedPluralStringKeyForCountAndSingularNoun(NSUInteger 
 [NSString stringWithFormat:[[NSBundle mainBundle] localizedStringForKey:TTTLocalizedPluralStringKeyForCountAndSingularNoun(count, singular) value:@"" table:nil], count]
 
 #define TTTLocalizedPluralStringFromTable(count, singular, tbl, comment) \
-[NSString stringWithFormat:[[NSBundle mainBundle] localizedStringForKey:TTTLocalizedPluralStringKeyForCountAndSingularNoun(count, singular) value:@"" table:(tbl)] count]
+[NSString stringWithFormat:[[NSBundle mainBundle] localizedStringForKey:TTTLocalizedPluralStringKeyForCountAndSingularNoun(count, singular) value:@"" table:(tbl)], count]
 
 #define TTTLocalizedPluralStringFromTableInBundle(count, singular, tbl, bundle, comment) \
-[NSString stringWithFormat:[bundle localizedStringForKey:TTTLocalizedPluralStringKeyForCountAndSingularNoun(count, singular) value:@"" table:(tbl)] count]
+[NSString stringWithFormat:[bundle localizedStringForKey:TTTLocalizedPluralStringKeyForCountAndSingularNoun(count, singular) value:@"" table:(tbl)], count]
 
 #define TTTLocalizedPluralStringWithDefaultValue(count, singular, tbl, bundle, val, comment) \
 [NSString stringWithFormat:[bundle localizedStringForKey:TTTLocalizedPluralStringKeyForCountAndSingularNoun(count, singular) value:(val) table:(tbl)], count]
