@@ -199,7 +199,7 @@ NSString * TTTLocalizedPluralStringKeyForCountAndSingularNoun(NSUInteger count, 
     // Because -hasPrefix is being used here, any three-letter ISO 639-2/3 codes must come before two-letter ISO 639-1 codes in order to prevent, for instance, Konkani (kok) from having Korean (ko) pluralization applied
     if ([languageCode hasPrefix:@"ar"]) {
         pluralRule = TTTArabicPluralRuleForCount(count);
-    } else if ([languageCode hasPrefix:@"zh-hans"]) {
+    } else if ([languageCode hasPrefix:@"zh-Hans"]) {
         pluralRule = TTTSimplifiedChinesePluralRuleForCount(count);
     } else if ([languageCode hasPrefix:@"cs"]) {
         pluralRule = TTTCzechPluralRuleForCount(count);
