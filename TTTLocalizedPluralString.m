@@ -194,37 +194,38 @@ static NSString * TTTThaiPluralRuleForCount(NSUInteger count) {
 
 NSString * TTTLocalizedPluralStringKeyForCountAndSingularNoun(NSUInteger count, NSString *singular) {
     NSString *languageCode = [[[NSBundle mainBundle] preferredLocalizations] objectAtIndex:0];
-
     NSString *pluralRule = nil;
-    if ([languageCode isEqualToString:@"ar"]) {
+
+    // Because -hasPrefix is being used here, any three-letter ISO 639-2/3 codes must come before two-letter ISO 639-1 codes in order to prevent, for instance, Konkani (kok) from having Korean (ko) pluralization applied
+    if ([languageCode hasPrefix:@"ar"]) {
         pluralRule = TTTArabicPluralRuleForCount(count);
-    } else if ([languageCode isEqualToString:@"zh-hans"]) {
+    } else if ([languageCode hasPrefix:@"zh-hans"]) {
         pluralRule = TTTSimplifiedChinesePluralRuleForCount(count);
-    } else if ([languageCode isEqualToString:@"cs"]) {
+    } else if ([languageCode hasPrefix:@"cs"]) {
         pluralRule = TTTCzechPluralRuleForCount(count);
     } else if ([languageCode hasPrefix:@"en"]) {
         pluralRule = TTTEnglishPluralRuleForCount(count);
-    } else if ([languageCode isEqualToString:@"fr"]) {
+    } else if ([languageCode hasPrefix:@"fr"]) {
         pluralRule = TTTFrenchPluralRuleForCount(count);
-    } else if ([languageCode isEqualToString:@"de"]) {
+    } else if ([languageCode hasPrefix:@"de"]) {
         pluralRule = TTTGermanPluralRuleForCount(count);
-    } else if ([languageCode isEqualToString:@"nl"]) {
+    } else if ([languageCode hasPrefix:@"nl"]) {
         pluralRule = TTTDutchPluralRuleForCount(count);
-    } else if ([languageCode isEqualToString:@"it"]) {
+    } else if ([languageCode hasPrefix:@"it"]) {
         pluralRule = TTTItalianPluralRuleForCount(count);
-    } else if ([languageCode isEqualToString:@"ja"]) {
+    } else if ([languageCode hasPrefix:@"ja"]) {
         pluralRule = TTTJapanesePluralRuleForCount(count);
-    } else if ([languageCode isEqualToString:@"ko"]) {
+    } else if ([languageCode hasPrefix:@"ko"]) {
         pluralRule = TTTKoreanPluralRuleForCount(count);
-    } else if ([languageCode isEqualToString:@"pl"]) {
+    } else if ([languageCode hasPrefix:@"pl"]) {
         pluralRule = TTTPolishPluralRuleForCount(count);
-    } else if ([languageCode isEqualToString:@"pt"]) {
+    } else if ([languageCode hasPrefix:@"pt"]) {
         pluralRule = TTTPortuguesePluralRuleForCount(count);
-    } else if ([languageCode isEqualToString:@"ru"]) {
+    } else if ([languageCode hasPrefix:@"ru"]) {
         pluralRule = TTTRussianPluralRuleForCount(count);
-    } else if ([languageCode isEqualToString:@"es"]) {
+    } else if ([languageCode hasPrefix:@"es"]) {
         pluralRule = TTTSpanishPluralRuleForCount(count);
-    } else if ([languageCode isEqualToString:@"th"]) {
+    } else if ([languageCode hasPrefix:@"th"]) {
         pluralRule = TTTThaiPluralRuleForCount(count);
     } else {
         NSLog(@"Unsupported language: %@", languageCode);
