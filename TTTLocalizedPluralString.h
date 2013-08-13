@@ -23,13 +23,13 @@
 #import <Foundation/Foundation.h>
 
 extern NSString * TTTLocalizedPluralStringKeyForCountAndSingularNoun(NSUInteger count, NSString *singular);
-extern NSString * TTTLocalizedPluralStringKeyForCountAndSingularNounForLang(NSUInteger count, NSString *singular, NSString *languageCode);
+extern NSString * TTTLocalizedPluralStringKeyForCountAndSingularNounForLanguage(NSUInteger count, NSString *singular, NSString *languageCode);
 
 #define TTTLocalizedPluralString(count, singular, comment) \
 [NSString stringWithFormat:[[NSBundle mainBundle] localizedStringForKey:TTTLocalizedPluralStringKeyForCountAndSingularNoun(count, singular) value:@"" table:nil], count]
 
-#define TTTLocalizedPluralStringForLang(count, singular, lang) \
-[NSString stringWithFormat:[[NSBundle mainBundle] localizedStringForKey:TTTLocalizedPluralStringKeyForCountAndSingularNounForLang(count, singular, lang) value:@"" table:nil], count]
+#define TTTLocalizedPluralStringForLanguage(count, singular, languageCode) \
+[NSString stringWithFormat:[[NSBundle mainBundle] localizedStringForKey:TTTLocalizedPluralStringKeyForCountAndSingularNounForLanguage(count, singular, languageCode) value:@"" table:nil], count]
 
 #define TTTLocalizedPluralStringFromTable(count, singular, tbl, comment) \
 [NSString stringWithFormat:[[NSBundle mainBundle] localizedStringForKey:TTTLocalizedPluralStringKeyForCountAndSingularNoun(count, singular) value:@"" table:(tbl)], count]

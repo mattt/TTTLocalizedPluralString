@@ -194,10 +194,10 @@ static NSString * TTTThaiPluralRuleForCount(NSUInteger count) {
 
 NSString * TTTLocalizedPluralStringKeyForCountAndSingularNoun(NSUInteger count, NSString *singular) {
     NSString *languageCode = [[[NSBundle mainBundle] preferredLocalizations] objectAtIndex:0];
-    return TTTLocalizedPluralStringKeyForCountAndSingularNounForLang(count, singular, languageCode);
+    return TTTLocalizedPluralStringKeyForCountAndSingularNounForLanguage(count, singular, languageCode);
 }
 
-NSString * TTTLocalizedPluralStringKeyForCountAndSingularNounForLang(NSUInteger count, NSString *singular, NSString *languageCode) {
+NSString * TTTLocalizedPluralStringKeyForCountAndSingularNounForLanguage(NSUInteger count, NSString *singular, NSString *languageCode) {
     NSString *pluralRule = nil;
 
     // Because -hasPrefix is being used here, any three-letter ISO 639-2/3 codes must come before two-letter ISO 639-1 codes in order to prevent, for instance, Konkani (kok) from having Korean (ko) pluralization applied
