@@ -81,6 +81,8 @@ static NSString * TTTEnglishPluralRuleForCount(NSUInteger count) {
 
 static NSString * TTTFrenchPluralRuleForCount(NSUInteger count) {
     switch (count) {
+        case 0:
+            return kTTTZeroPluralRule;
         case 1:
             return kTTTOnePluralRule;
         default:
