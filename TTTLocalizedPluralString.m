@@ -57,6 +57,10 @@ static NSString * TTTSimplifiedChinesePluralRuleForCount(NSUInteger count) {
     return kTTTOtherPluralRule;
 }
 
+static NSString * TTTTraditionalChinesePluralRuleForCount(NSUInteger count) {
+    return kTTTOtherPluralRule;
+}
+
 static NSString * TTTCzechPluralRuleForCount(NSUInteger count) {
     switch (count) {
         case 1:
@@ -209,6 +213,8 @@ NSString * TTTLocalizedPluralStringKeyForCountAndSingularNounForLanguage(NSUInte
         pluralRule = TTTArabicPluralRuleForCount(count);
     } else if ([languageCode hasPrefix:@"zh-Hans"]) {
         pluralRule = TTTSimplifiedChinesePluralRuleForCount(count);
+    } else if ([languageCode hasPrefix:@"zh-Hant"]) {
+        pluralRule = TTTTraditionalChinesePluralRuleForCount(count);
     } else if ([languageCode hasPrefix:@"cs"]) {
         pluralRule = TTTCzechPluralRuleForCount(count);
     } else if ([languageCode hasPrefix:@"en"]) {
