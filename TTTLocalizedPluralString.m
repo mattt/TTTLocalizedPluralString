@@ -184,6 +184,18 @@ static NSString * TTTRussianPluralRuleForCount(NSUInteger count) {
     return kTTTManyPluralRule;
 }
 
+static NSString * TTTLatvianPluralRuleForCount(NSUInteger count) {
+    switch (count) {
+        case 0:
+            return kTTTZeroPluralRule;
+        case 1:
+            return kTTTOnePluralRule;
+        default: {
+            return kTTTManyPluralRule;
+        }
+    }
+}
+
 static NSString * TTTSpanishPluralRuleForCount(NSUInteger count) {
     switch (count) {
         case 1:
@@ -244,6 +256,8 @@ NSString * TTTLocalizedPluralStringKeyForCountAndSingularNounForLanguage(NSUInte
         pluralRule = TTTThaiPluralRuleForCount(count);
     } else if ([languageCode hasPrefix:@"tr"]) {
         pluralRule = TTTTurkishPluralRuleForCount(count);
+    } else if ([languageCode hasPrefix:@"lv"]) {
+        pluralRule = TTTLatvianPluralRuleForCount(count);
     } else {
         NSLog(@"Unsupported language: %@", languageCode);
         return nil;
