@@ -1,6 +1,8 @@
 # TTTLocalizedPluralString
 ## NSLocalizedString with a Count Argument
 
+> As of iOS 7 and Mac OS X 10.9 Mavericks, Foundation has the ability to specify localized strings according to pluralization and grammar rules. You can find more information about it in the [Localized Property List File](https://developer.apple.com/library/mac/releasenotes/Foundation/RN-Foundation/#//apple_ref/doc/uid/TP30000742-CH2-SW56) section of the Foundation release notes.
+
 `NSLocalizedString` and its related macros are make localizing Mac and iOS applications relatively straight-forward and simple. It falls down, however, when having to deal with strings whose conjugations change based on a dynamic count value. In such cases, you may have seen code like this:
 
 ``` objective-c
@@ -32,15 +34,6 @@ Here is the full list of plural rules:
 * `few`
 * `many`
 * `other`
-
-## Next Steps
-
-`TTTLocalizedPluralString` is safe to use in production applications. However, there are a few features that are currently missing that make this a really great solution. Consider this a wish list / roadmap for this project:
-
-* Command-line tool to generate the keys necessary for your project / integration with `genstrings`
-* Proper documentation
-* Example project with sample usage
-* Plural rules for all localizations supported on iOS
 
 ---
 
