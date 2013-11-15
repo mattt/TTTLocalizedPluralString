@@ -128,6 +128,17 @@ static NSString * TTTKoreanPluralRuleForCount(NSUInteger count) {
     return kTTTOtherPluralRule;
 }
 
+static NSString * TTTLatvianPluralRuleForCount(NSUInteger count) {
+    switch (count) {
+        case 0:
+            return kTTTZeroPluralRule;
+        case 1:
+            return kTTTOnePluralRule;
+        default:
+            return kTTTManyPluralRule;
+    }
+}
+
 static NSString * TTTPolishPluralRuleForCount(NSUInteger count) {
     NSUInteger mod10 = count % 10;
     NSUInteger mod100 = count % 100;
@@ -184,18 +195,6 @@ static NSString * TTTRussianPluralRuleForCount(NSUInteger count) {
     return kTTTManyPluralRule;
 }
 
-static NSString * TTTLatvianPluralRuleForCount(NSUInteger count) {
-    switch (count) {
-        case 0:
-            return kTTTZeroPluralRule;
-        case 1:
-            return kTTTOnePluralRule;
-        default: {
-            return kTTTManyPluralRule;
-        }
-    }
-}
-
 static NSString * TTTSpanishPluralRuleForCount(NSUInteger count) {
     switch (count) {
         case 1:
@@ -244,6 +243,8 @@ NSString * TTTLocalizedPluralStringKeyForCountAndSingularNounForLanguage(NSUInte
         pluralRule = TTTJapanesePluralRuleForCount(count);
     } else if ([languageCode hasPrefix:@"ko"]) {
         pluralRule = TTTKoreanPluralRuleForCount(count);
+    } else if ([languageCode hasPrefix:@"lv"]) {
+        pluralRule = TTTLatvianPluralRuleForCount(count);
     } else if ([languageCode hasPrefix:@"pl"]) {
         pluralRule = TTTPolishPluralRuleForCount(count);
     } else if ([languageCode hasPrefix:@"pt"]) {
@@ -256,8 +257,6 @@ NSString * TTTLocalizedPluralStringKeyForCountAndSingularNounForLanguage(NSUInte
         pluralRule = TTTThaiPluralRuleForCount(count);
     } else if ([languageCode hasPrefix:@"tr"]) {
         pluralRule = TTTTurkishPluralRuleForCount(count);
-    } else if ([languageCode hasPrefix:@"lv"]) {
-        pluralRule = TTTLatvianPluralRuleForCount(count);
     } else {
         NSLog(@"Unsupported language: %@", languageCode);
         return nil;
