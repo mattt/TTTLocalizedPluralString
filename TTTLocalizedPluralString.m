@@ -129,14 +129,24 @@ static NSString * TTTKoreanPluralRuleForCount(NSUInteger count) {
 }
 
 static NSString * TTTLatvianPluralRuleForCount(NSUInteger count) {
-    switch (count) {
-        case 0:
-            return kTTTZeroPluralRule;
-        case 1:
-            return kTTTOnePluralRule;
-        default:
-            return kTTTManyPluralRule;
+    NSUInteger mod10 = count % 10;
+    NSUInteger mod100 = count % 100;
+    if (count == 0) {
+        return kTTTZeroPluralRule;
     }
+    if (count == 1) {
+        return kTTTOnePluralRule;
+    }
+    switch (mod10) {
+        case 1:
+            if (mod100 != 11) {
+                return kTTTOnePluralRule;
+            }
+            break;
+        default:
+            break;
+    }
+    return kTTTManyPluralRule;
 }
 
 static NSString * TTTPolishPluralRuleForCount(NSUInteger count) {
