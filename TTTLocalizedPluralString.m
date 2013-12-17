@@ -301,7 +301,7 @@ static NSString * TTTRomanianPluralRuleForCount(NSUInteger count) {
             return kTTTOnePluralRule;
         default:
             if (mod100 > 1 && mod100 <= 19) {
-                return kTTTFewPluralRule
+                return kTTTFewPluralRule;
             }
             break;
     }
