@@ -351,7 +351,7 @@ static NSString * TTTRussianPluralRuleForCount(NSUInteger count) {
                 case 11:
                     break;
                 default:
-                    return kTTTFewPluralRule;
+                    return kTTTOnePluralRule;
             }
 
             break;
