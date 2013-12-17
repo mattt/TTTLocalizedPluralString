@@ -18,7 +18,7 @@ While this works alright for English, you run into problems when targeting other
 * Many Asian languages, like Japanese, Korean, Thai, and Simplified Chinese, do not have plural forms of nouns
 * Arabic has several plural forms, including rules for zero, one, two, as well as few, many, and other, which are determined using a rather complicated base 10 divmod operation to determine the parity.
 
-Fortunately, `TTTLocalizedPluralString` figures all of this out for you. You can use it just as you would `NSLocalizedString`, only in this case, you also have an argument for count. Here is the example from before, this time using `TTTLocalizedPluralString`. 
+Fortunately, `TTTLocalizedPluralString` figures all of this out for you. You can use it just as you would `NSLocalizedString`, only in this case, you also have an argument for count. Here is the example from before, this time using `TTTLocalizedPluralString`.
 
 ``` objective-c
 return TTTLocalizedPluralString(count, @"Person", nil);
@@ -34,6 +34,43 @@ Here is the full list of plural rules:
 * `few`
 * `many`
 * `other`
+
+## Supported Locales
+
+- Arabic (`ar`)
+- Catalan (`ca`)
+- Chinese (Simplified) (`zh-Hans`)
+- Chinese (Traditional) (`zh-Hant`)
+- Croatian (`cr`)
+- Czech (`cs`)
+- Danish (`da`)
+- Dutch (`nl`)
+- English (`en`)
+- German (`de`)
+- Finish (`fi`)
+- Greek (`el`)
+- French (`fr`)
+- Hebrew (`he`)
+- Hungarian (`hu`)
+- Indonesian (`id`)
+- Italian (`it`)
+- Japanese (`ja`)
+- Korean (`ko`)
+- Latvian (`lv`)
+- Malay (`ms`)
+- Norwegian Bokmål (`nb`)
+- Norwegian Nynorsk (`nn`)
+- Polish (`pl`)
+- Portuguese (`pt`)
+- Romanian (`ro`)
+- Russian (`ru`)
+- Spanish (`es`)
+- Slovak (`sk`)
+- Swedish (`sv`)
+- Thai (`th`)
+- Turkish (`tr`)
+- Ukrainian (`uk`)
+- Vietnamese (`vi`)
 
 ---
 
