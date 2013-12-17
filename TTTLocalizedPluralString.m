@@ -267,6 +267,24 @@ static NSString * TTTMalayPluralRuleForCount(NSUInteger count) {
     return kTTTOtherPluralRule;
 }
 
+static NSString * TTTNorwegianBokmalPluralRuleForCount(NSUInteger count) {
+    switch (count) {
+        case 1:
+            return kTTTOnePluralRule;
+        default:
+            return kTTTOtherPluralRule;
+    }
+}
+
+static NSString * TTTNorwegianNynorskPluralRuleForCount(NSUInteger count) {
+    switch (count) {
+        case 1:
+            return kTTTOnePluralRule;
+        default:
+            return kTTTOtherPluralRule;
+    }
+}
+
 static NSString * TTTPolishPluralRuleForCount(NSUInteger count) {
     NSUInteger mod10 = count % 10;
     NSUInteger mod100 = count % 100;
@@ -455,14 +473,14 @@ NSString * TTTLocalizedPluralStringKeyForCountAndSingularNounForLanguage(NSUInte
         pluralRule = TTTCroatianPluralRuleForCount(count);
     } else if ([languageCode hasPrefix:@"cs"]) {
         pluralRule = TTTCzechPluralRuleForCount(count);
+    } else if ([languageCode hasPrefix:@"da"]) {
+        pluralRule = TTTDanishPluralRuleForCount(count);
     } else if ([languageCode hasPrefix:@"nl"]) {
         pluralRule = TTTDutchPluralRuleForCount(count);
     } else if ([languageCode hasPrefix:@"en"]) {
         pluralRule = TTTEnglishPluralRuleForCount(count);
     } else if ([languageCode hasPrefix:@"fr"]) {
         pluralRule = TTTFrenchPluralRuleForCount(count);
-    } else if ([languageCode hasPrefix:@"da"]) {
-        pluralRule = TTTDanishPluralRuleForCount(count);
     } else if ([languageCode hasPrefix:@"de"]) {
         pluralRule = TTTGermanPluralRuleForCount(count);
     } else if ([languageCode hasPrefix:@"fi"]) {
@@ -473,7 +491,7 @@ NSString * TTTLocalizedPluralStringKeyForCountAndSingularNounForLanguage(NSUInte
         pluralRule = TTTHebrewPluralRuleForCount(count);
     } else if ([languageCode hasPrefix:@"hu"]) {
         pluralRule = TTTHungarianPluralRuleForCount(count);
-    } else if ([languageCode hasPrefix:@"in"]) {
+    } else if ([languageCode hasPrefix:@"id"]) {
         pluralRule = TTTIndonesianPluralRuleForCount(count);
     } else if ([languageCode hasPrefix:@"it"]) {
         pluralRule = TTTItalianPluralRuleForCount(count);
@@ -485,6 +503,10 @@ NSString * TTTLocalizedPluralStringKeyForCountAndSingularNounForLanguage(NSUInte
         pluralRule = TTTLatvianPluralRuleForCount(count);
     } else if ([languageCode hasPrefix:@"ms"]) {
         pluralRule = TTTMalayPluralRuleForCount(count);
+    } else if ([languageCode hasPrefix:@"nb"]) {
+        pluralRule = TTTNorwegianBokmalPluralRuleForCount(count);
+    } else if ([languageCode hasPrefix:@"nn"]) {
+        pluralRule = TTTNorwegianNynorskPluralRuleForCount(count);
     } else if ([languageCode hasPrefix:@"pl"]) {
         pluralRule = TTTPolishPluralRuleForCount(count);
     } else if ([languageCode hasPrefix:@"pt"]) {
