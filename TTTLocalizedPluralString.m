@@ -241,12 +241,15 @@ static NSString * TTTKoreanPluralRuleForCount(NSUInteger count) {
 static NSString * TTTLatvianPluralRuleForCount(NSUInteger count) {
     NSUInteger mod10 = count % 10;
     NSUInteger mod100 = count % 100;
+
     if (count == 0) {
         return kTTTZeroPluralRule;
     }
+
     if (count == 1) {
         return kTTTOnePluralRule;
     }
+
     switch (mod10) {
         case 1:
             if (mod100 != 11) {
@@ -256,6 +259,7 @@ static NSString * TTTLatvianPluralRuleForCount(NSUInteger count) {
         default:
             break;
     }
+
     return kTTTManyPluralRule;
 }
 
