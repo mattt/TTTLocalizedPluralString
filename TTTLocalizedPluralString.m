@@ -345,31 +345,25 @@ static NSString * TTTRussianPluralRuleForCount(NSUInteger count) {
     NSUInteger mod10 = count % 10;
     NSUInteger mod100 = count % 100;
 
-    switch (mod10) {
-        case 1:
-            switch (mod100) {
-                case 11:
-                    break;
-                default:
-                    return kTTTFewPluralRule;
-            }
-
+    switch (mod100) {
+        case 11:
+        case 12:
+        case 13:
+        case 14:
             break;
-        case 2:
-        case 3:
-        case 4:
-            switch (mod100) {
-                case 12:
-                case 13:
-                case 14:
-                    break;
-                default:
-                    return kTTTFewPluralRule;
-            }
-
-            break;
+            
         default:
-            break;
+            switch (mod10) {
+                case 1:
+                    return kTTTOnePluralRule;
+                case 2:
+                case 3:
+                case 4:
+                    return kTTTFewPluralRule;
+                default:
+                    break;
+            }
+			
     }
 
     return kTTTManyPluralRule;
@@ -418,31 +412,25 @@ static NSString * TTTUkrainianPluralRuleForCount(NSUInteger count) {
     NSUInteger mod10 = count % 10;
     NSUInteger mod100 = count % 100;
 
-    switch (mod10) {
-        case 1:
-            switch (mod100) {
-                case 11:
-                    break;
-                default:
-                    return kTTTFewPluralRule;
-            }
-
+    switch (mod100) {
+        case 11:
+        case 12:
+        case 13:
+        case 14:
             break;
-        case 2:
-        case 3:
-        case 4:
-            switch (mod100) {
-                case 12:
-                case 13:
-                case 14:
-                    break;
-                default:
-                    return kTTTFewPluralRule;
-            }
-
-            break;
+            
         default:
-            break;
+            switch (mod10) {
+                case 1:
+                    return kTTTOnePluralRule;
+                case 2:
+                case 3:
+                case 4:
+                    return kTTTFewPluralRule;
+                default:
+                    break;
+            }
+			
     }
 
     return kTTTManyPluralRule;
