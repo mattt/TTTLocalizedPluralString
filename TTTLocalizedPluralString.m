@@ -41,10 +41,10 @@ static NSString * TTTArabicPluralRuleForCount(NSUInteger count) {
         case 2:
             return kTTTTwoPluralRule;
         default: {
-            NSUInteger mod10 = count % 10;
-            if (mod10 >= 3 && mod10 <= 10) {
+            NSUInteger mod100 = count % 100;
+            if (mod100 >= 3 && mod100 <= 10) {
                 return kTTTFewPluralRule;
-            } else if (mod10 >= 11) {
+            } else if (mod100 >= 11) {
                 return kTTTManyPluralRule;
             } else {
                 return kTTTOtherPluralRule;
