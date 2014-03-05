@@ -209,12 +209,7 @@ static NSString * TTTHebrewPluralRuleForCount(NSUInteger count) {
 }
 
 static NSString * TTTHungarianPluralRuleForCount(NSUInteger count) {
-    switch (count) {
-        case 1:
-            return kTTTOnePluralRule;
-        default:
-            return kTTTOtherPluralRule;
-    }
+    return kTTTOnePluralRule;
 }
 
 static NSString * TTTIndonesianPluralRuleForCount(NSUInteger count) {
