@@ -3,7 +3,7 @@
 
 > As of iOS 7 and Mac OS X 10.9 Mavericks, Foundation has the ability to specify localized strings according to pluralization and grammar rules. You can find more information about it in the [Localized Property List File](https://developer.apple.com/library/mac/releasenotes/Foundation/RN-Foundation/#//apple_ref/doc/uid/TP30000742-CH2-SW56) section of the Foundation release notes.
 
-`NSLocalizedString` and its related macros are make localizing Mac and iOS applications relatively straight-forward and simple. It falls down, however, when having to deal with strings whose conjugations change based on a dynamic count value. In such cases, you may have seen code like this:
+`NSLocalizedString` and its related macros make localizing Mac and iOS applications relatively straight-forward and simple. It falls down, however, when having to deal with strings whose conjugations change based on a dynamic count value. In such cases, you may have seen code like this:
 
 ``` objective-c
 if (count == 1) {
