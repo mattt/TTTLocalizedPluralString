@@ -1,4 +1,4 @@
-// TTTLocalizedPluralString.h
+// TTTLocalizedPluralString.m
 //
 // Copyright (c) 2011 Mattt Thompson (http://mattt.me)
 //
