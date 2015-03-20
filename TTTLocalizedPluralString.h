@@ -23,13 +23,14 @@
 #import <Foundation/Foundation.h>
 
 extern NSString * TTTLocalizedPluralStringKeyForCountAndSingularNoun(NSUInteger count, NSString *singular);
-extern NSString * TTTLocalizedPluralStringKeyForCountAndSingularNounForLanguage(NSUInteger count, NSString *singular, NSString *languageCode);
+extern NSString * TTTLocalizedPluralStringKeyForCountAndSingularNounUnformatted(NSUInteger count, NSString *singular);
+extern NSString * TTTLocalizedPluralStringKeyForCountAndSingularNounForLanguage(NSUInteger count, NSString *singular, NSString *languageCode, BOOL formatted);
 
 #define TTTLocalizedPluralString(count, singular, comment) \
 [NSString stringWithFormat:[[NSBundle mainBundle] localizedStringForKey:TTTLocalizedPluralStringKeyForCountAndSingularNoun(count, singular) value:@"" table:nil], count]
 
 #define TTTLocalizedPluralStringForLanguage(count, singular, languageCode) \
-[NSString stringWithFormat:[[NSBundle mainBundle] localizedStringForKey:TTTLocalizedPluralStringKeyForCountAndSingularNounForLanguage(count, singular, languageCode) value:@"" table:nil], count]
+[NSString stringWithFormat:[[NSBundle mainBundle] localizedStringForKey:TTTLocalizedPluralStringKeyForCountAndSingularNounForLanguage(count, singular, languageCode, NO) value:@"" table:nil], count]
 
 #define TTTLocalizedPluralStringFromTable(count, singular, tbl, comment) \
 [NSString stringWithFormat:[[NSBundle mainBundle] localizedStringForKey:TTTLocalizedPluralStringKeyForCountAndSingularNoun(count, singular) value:@"" table:(tbl)], count]
@@ -39,3 +40,6 @@ extern NSString * TTTLocalizedPluralStringKeyForCountAndSingularNounForLanguage(
 
 #define TTTLocalizedPluralStringWithDefaultValue(count, singular, tbl, bundle, val, comment) \
 [NSString stringWithFormat:[bundle localizedStringForKey:TTTLocalizedPluralStringKeyForCountAndSingularNoun(count, singular) value:(val) table:(tbl)], count]
+
+#define TTTUnformattedLocalizedPluralStringFromTableInBundle(count, singular, tbl, bundle, comment) \
+[bundle localizedStringForKey:TTTLocalizedPluralStringKeyForCountAndSingularNounUnformatted(count, singular) value:@"" table:(tbl)]
