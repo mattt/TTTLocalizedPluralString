@@ -39,3 +39,12 @@ extern NSString * TTTLocalizedPluralStringKeyForCountAndSingularNounForLanguage(
 
 #define TTTLocalizedPluralStringWithDefaultValue(count, singular, tbl, bundle, val, comment) \
 [NSString stringWithFormat:[bundle localizedStringForKey:TTTLocalizedPluralStringKeyForCountAndSingularNoun(count, singular) value:(val) table:(tbl)], count]
+
+NSString * const kTTTZeroPluralRule;
+NSString * const kTTTOnePluralRule;
+NSString * const kTTTTwoPluralRule;
+NSString * const kTTTFewPluralRule;
+NSString * const kTTTManyPluralRule;
+NSString * const kTTTOtherPluralRule;
+
+extern NSString * TTTPluralRuleForLanguageAndCount(NSString *languageCode, NSUInteger count);
