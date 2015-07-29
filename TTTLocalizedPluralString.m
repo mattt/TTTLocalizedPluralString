@@ -25,12 +25,12 @@
 // Source: Unicode Common Locale Data Repository Plural Rules
 // http://unicode.org/repos/cldr-tmp/trunk/diff/supplemental/language_plural_rules.html
 
-static NSString * const kTTTZeroPluralRule = @"zero";
-static NSString * const kTTTOnePluralRule = @"one";
-static NSString * const kTTTTwoPluralRule = @"two";
-static NSString * const kTTTFewPluralRule = @"few";
-static NSString * const kTTTManyPluralRule = @"many";
-static NSString * const kTTTOtherPluralRule = @"other";
+NSString * const kTTTZeroPluralRule  = @"zero";
+NSString * const kTTTOnePluralRule   = @"one";
+NSString * const kTTTTwoPluralRule   = @"two";
+NSString * const kTTTFewPluralRule   = @"few";
+NSString * const kTTTManyPluralRule  = @"many";
+NSString * const kTTTOtherPluralRule = @"other";
 
 static NSString * TTTArabicPluralRuleForCount(NSUInteger count) {
     switch (count) {
@@ -446,8 +446,19 @@ NSString * TTTLocalizedPluralStringKeyForCountAndSingularNoun(NSUInteger count, 
 }
 
 NSString * TTTLocalizedPluralStringKeyForCountAndSingularNounForLanguage(NSUInteger count, NSString *singular, NSString *languageCode) {
-    NSString *pluralRule = nil;
+    NSString *pluralRule = TTTPluralRuleForLanguageAndCount(languageCode, count);
+    
+    if (pluralRule == nil) {
+        NSLog(@"Unsupported language: %@", languageCode);
+        return nil;
+    }
 
+    return [NSString stringWithFormat:@"%%d %@ (plural rule: %@)", singular, pluralRule];
+}
+
+NSString * TTTPluralRuleForLanguageAndCount(NSString *languageCode, NSUInteger count) {
+    NSString *pluralRule = nil;
+    
     // Because -hasPrefix is being used here, any three-letter ISO 639-2/3 codes must come before two-letter ISO 639-1 codes in order to prevent, for instance, Konkani (kok) from having Korean (ko) pluralization applied
     if ([languageCode hasPrefix:@"ar"]) {
         pluralRule = TTTArabicPluralRuleForCount(count);
@@ -517,10 +528,7 @@ NSString * TTTLocalizedPluralStringKeyForCountAndSingularNounForLanguage(NSUInte
         pluralRule = TTTUkrainianPluralRuleForCount(count);
     } else if ([languageCode hasPrefix:@"vi"]) {
         pluralRule = TTTVietnamesePluralRuleForCount(count);
-    } else {
-        NSLog(@"Unsupported language: %@", languageCode);
-        return nil;
     }
-
-    return [NSString stringWithFormat:@"%%d %@ (plural rule: %@)", singular, pluralRule];
+    
+    return pluralRule;
 }
