@@ -24,7 +24,7 @@ Fortunately, `TTTLocalizedPluralString` figures all of this out for you. You can
 return TTTLocalizedPluralString(count, @"Person", nil);
 ```
 
-This macro points to a function that determines the plural rule for the current locale, and then does an `NSBundle` localized string lookup for the corresponding value. In this case, `en.lproj/Localizable.strings` would have two keys for this: `%d Person (plural rule: one)` and `%d Person (plural rule: other)`. Other localizations would only require the keys used by that language (e.g. 1 for Japanese, and 6 for Arabic).
+This macro points to a function that determines the plural rule for the current locale, and then does an `NSBundle` localized string lookup for the corresponding value. In this case, `en.lproj/Localizable.strings` would have two keys for this: `%d Person (plural rule: one)` and `%d People (plural rule: other)`. Other localizations would only require the keys used by that language (e.g. 1 for Japanese, and 6 for Arabic).
 
 Here is the full list of plural rules:
 
