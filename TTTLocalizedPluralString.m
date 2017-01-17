@@ -342,6 +342,10 @@ static NSString * TTTRomanianPluralRuleForCount(NSUInteger count) {
 }
 
 static NSString * TTTRussianPluralRuleForCount(NSUInteger count) {
+    if (count == 0) {
+        return kTTTZeroPluralRule;
+    }
+    
     NSUInteger mod10 = count % 10;
     NSUInteger mod100 = count % 100;
 
