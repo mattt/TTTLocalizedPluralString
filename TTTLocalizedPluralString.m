@@ -462,6 +462,9 @@ static NSString * TTTUkrainianPluralRuleForCount(NSUInteger count) {
 static NSString * TTTVietnamesePluralRuleForCount(NSUInteger count) {
     return kTTTOtherPluralRule;
 }
+static NSString * TTTHindiPluralRuleForCount(NSUInteger count) {
+    return kTTTOtherPluralRule;
+}
 
 NSString * TTTLocalizedPluralStringKeyForCountAndSingularNoun(NSUInteger count, NSString *singular) {
     NSString *languageCode = [[[NSBundle mainBundle] preferredLocalizations] objectAtIndex:0];
@@ -544,6 +547,8 @@ NSString * TTTLocalizedPluralStringKeyForCountAndSingularNounForLanguage(NSUInte
         pluralRule = TTTUkrainianPluralRuleForCount(count);
     } else if ([languageCode hasPrefix:@"vi"]) {
         pluralRule = TTTVietnamesePluralRuleForCount(count);
+    } else if ([languageCode hasPrefix:@"hi"]) {
+        pluralRule = TTTHindiPluralRuleForCount(count);
     } else {
         NSLog(@"Unsupported language: %@", languageCode);
         return nil;
