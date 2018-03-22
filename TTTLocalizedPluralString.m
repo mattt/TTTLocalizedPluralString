@@ -1,6 +1,6 @@
 // TTTLocalizedPluralString.m
 //
-// Copyright (c) 2011 Mattt Thompson (http://mattt.me)
+// Copyright (c) 2011 – 2018 Mattt (https://mat.tt)
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -361,7 +361,7 @@ static NSString * TTTRussianPluralRuleForCount(NSUInteger count) {
         case 13:
         case 14:
             break;
-            
+
         default:
             switch (mod10) {
                 case 1:
@@ -373,7 +373,7 @@ static NSString * TTTRussianPluralRuleForCount(NSUInteger count) {
                 default:
                     break;
             }
-			
+
     }
 
     return kTTTManyPluralRule;
@@ -457,7 +457,7 @@ static NSString * TTTUkrainianPluralRuleForCount(NSUInteger count) {
         case 13:
         case 14:
             break;
-            
+
         default:
             switch (mod10) {
                 case 1:
@@ -469,7 +469,7 @@ static NSString * TTTUkrainianPluralRuleForCount(NSUInteger count) {
                 default:
                     break;
             }
-			
+
     }
 
     return kTTTManyPluralRule;
