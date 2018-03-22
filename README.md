@@ -1,11 +1,14 @@
 # TTTLocalizedPluralString
+
 ## NSLocalizedString with a Count Argument
 
 > As of iOS 7 and Mac OS X 10.9 Mavericks, Foundation has the ability to specify localized strings according to pluralization and grammar rules. You can find more information about it in the [Localized Property List File](https://developer.apple.com/library/mac/releasenotes/Foundation/RN-Foundation/#//apple_ref/doc/uid/TP30000742-CH2-SW56) section of the Foundation release notes.
 
+---
+
 `NSLocalizedString` and its related macros make localizing Mac and iOS applications relatively straight-forward and simple. It falls down, however, when having to deal with strings whose conjugations change based on a dynamic count value. In such cases, you may have seen code like this:
 
-``` objective-c
+```objective-c
 if (count == 1) {
   return NSLocalizedString(@"1 Person", nil);
 } else {
@@ -20,7 +23,7 @@ While this works alright for English, you run into problems when targeting other
 
 Fortunately, `TTTLocalizedPluralString` figures all of this out for you. You can use it just as you would `NSLocalizedString`, only in this case, you also have an argument for count. Here is the example from before, this time using `TTTLocalizedPluralString`.
 
-``` objective-c
+```objective-c
 return TTTLocalizedPluralString(count, @"Person", nil);
 ```
 
@@ -79,12 +82,9 @@ Here is the full list of plural rules:
 
 ## Contact
 
-Mattt Thompson
-
-- http://github.com/mattt
-- http://twitter.com/mattt
-- m@mattt.me
+[Mattt](http://twitter.com/mattt)
 
 ## License
 
-TTTLocalizedPluralString is available under the MIT license. See the LICENSE file for more info.
+TTTLocalizedPluralString is available under the MIT license.
+See the LICENSE file for more info.
