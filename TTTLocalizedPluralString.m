@@ -405,7 +405,7 @@ static NSString * TTTSlovakPluralRuleForCount(NSUInteger count) {
     }
 }
 
-static NSString * TTTSlovenePluralRuleForCount(NSUInteger count) {
+static NSString * TTTSlovenianPluralRuleForCount(NSUInteger count) {
     NSUInteger mod100 = count % 100;
 
     switch (mod100) {
@@ -551,7 +551,7 @@ NSString * TTTLocalizedPluralStringKeyForCountAndSingularNounForLanguage(NSUInte
     } else if ([languageCode hasPrefix:@"sk"]) {
         pluralRule = TTTSlovakPluralRuleForCount(count);
     } else if ([languageCode hasPrefix:@"sl"]) {
-        pluralRule = TTTSlovenePluralRuleForCount(count);
+        pluralRule = TTTSlovenianPluralRuleForCount(count);
     } else if ([languageCode hasPrefix:@"sv"]) {
         pluralRule = TTTSwedishPluralRuleForCount(count);
     } else if ([languageCode hasPrefix:@"th"]) {
